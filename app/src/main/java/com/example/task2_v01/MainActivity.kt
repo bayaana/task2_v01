@@ -7,6 +7,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
@@ -41,19 +42,22 @@ fun CounterScreen() {
     var count by remember {
         mutableIntStateOf(0)
     }
-    Column {
+    Column (
+        modifier = Modifier.padding(start = 16.dp, end = 16.dp)
+    ) {
         Text(
             text="Счётчик",
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier.fillMaxWidth().padding(16.dp),
             fontWeight = FontWeight.Bold,
+            fontSize = 20.sp,
             textAlign = TextAlign.Center
             )
         Text(
             text="$count",
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier.fillMaxWidth().padding(16.dp),
             fontWeight = FontWeight.Bold,
             textAlign = TextAlign.Center,
-            fontSize = 36.sp)
+            fontSize = 44.sp)
         Row (
             modifier = Modifier.fillMaxWidth()
         ) {
@@ -63,10 +67,12 @@ fun CounterScreen() {
                         count--
                     }
                 },
-                modifier = Modifier.weight(1f),
+                modifier = Modifier.weight(1f).padding(end = 4.dp),
                 shape = RoundedCornerShape(12.dp),
             ) {
-                Text("-1")
+                Text(
+                    text="-1",
+                    fontSize = 20.sp)
             }
             Button(
                 onClick = {
@@ -74,10 +80,12 @@ fun CounterScreen() {
                         count++
                     }
                 },
-                modifier = Modifier.weight(1f),
+                modifier = Modifier.weight(1f).padding(start = 4.dp),
                 shape = RoundedCornerShape(12.dp)
             ) {
-                Text("+1")
+                Text(
+                    text="+1",
+                    fontSize = 20.sp)
             }
         }
 
@@ -88,13 +96,16 @@ fun CounterScreen() {
             modifier = Modifier.fillMaxWidth(),
             shape = RoundedCornerShape(12.dp)
         ) {
-            Text("Сбросить")
+            Text(
+                text="Сбросить",
+                fontSize = 20.sp)
         }
         if (count == 10) {
             Text (
                 text="Максимум достигнут",
                 modifier = Modifier.fillMaxWidth(),
-                textAlign = TextAlign.Center
+                textAlign = TextAlign.Center,
+                fontSize = 20.sp
             )
         }
     }
